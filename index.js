@@ -11,6 +11,6 @@ app.get("/", function(res,res){
   res.render("index")
 })
 
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 8080;
 //Set up server
-app.listen(port, console.log("APP STARTED ON SERVER 5000"));
+app.listen(port, console.log("APP STARTED ON SERVER 8080"));
