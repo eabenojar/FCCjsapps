@@ -1,0 +1,116 @@
+/* CSS FOR POMODOR CLOCK */
+.main_clock {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.main-sub-container {
+  height: auto;
+  width: auto;
+  background-color: #FFF;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px 3px rgba(163,163,163,1);
+-moz-box-shadow: 0px 0px 10px 3px rgba(163,163,163,1);
+box-shadow: 0px 0px 10px 3px rgba(163,163,163,1);
+}
+.pomodoro-title {
+  font-size: 36px;
+  font-weight: 400;
+  font-family: sans-serif;
+}
+.timers {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+.timer-titles {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.break, .session {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.session-time, .break-time {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+#session-count, #break-count {
+  font-size: 40px;
+}
+#minus-break, #add-break, #minus-session, #add-session {
+  font-size: 30px;
+  margin-bottom: 15px;
+  border-right: 1px solid transparent;
+  color: #000;
+  padding: 5px;
+  width: auto;
+}
+button {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  margin: 10px;
+}
+button:focus {
+  outline: none;
+}
+button:hover {
+  color: #3663C4;
+}
+.clock {
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #3663C4;
+  margin-bottom: 15px;
+}
+#stop, #start, #reset {
+  border-radius: 5px;
+  padding: 10px 20px 10px;
+  border: 1px solid transparent;
+  font-size: 20px;
+  font-family: sans-serif;
+  height: auto;
+}
+.start button {
+  margin-right: 10px;
+
+}
+#start {
+  background-color: #4FBD82;
+}
+#countdown {
+  font-size: 60px;
+  color: #FFF;
+}
+#session-title {
+  font-size: 14px;
+}
+#stop {
+  background-color: #E24D4D;
+}
+#reset {
+  background-color: #AA6ED4;
+}
+/* END OF POMODORO CSS */

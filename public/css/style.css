@@ -1,0 +1,29 @@
+@import url("pomodoro.css");
+@import url("twitch.css");
+@import url("calculator.css");
+@import url("tictactoe.css");
+@import url("wiki.css");
+body {
+  background-color: blue;
+}
+.nopadding {
+  padding: 0 !important;
+   margin: 0 !important;
+   border-right: 5px dashed #FFF;
+   border-bottom: 5px dashed #FFF;
+}
+.container-fluid {
+  padding: !important 15px;
+  margin:  !important 15px;
+}
+.main {
+  background-image: linear-gradient(to top, #79acff, #23c3ff, #00d4f1, #45e1d5, #8be9b8);
+  min-height: 200vh;
+  height: auto;
+  width: 100vw;
+}
+#col-container {
+  height: 100vh;
+  width: 100%;
+  /* background-color: green; */
+}

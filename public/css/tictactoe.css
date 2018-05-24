@@ -1,0 +1,158 @@
+.main-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+}
+.tictactoe-title {
+  font-size: 36px;
+  font-weight: 400;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+  color: #FFF;
+}
+.outer-container {
+ height: 355px;
+ width: 355px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background-color: #FFD7A1;
+ flex-direction: column;
+ border-radius: 10px;
+ -webkit-box-shadow: 0px 10px 22px 5px rgba(0,0,0,0.75);
+ -moz-box-shadow: 0px 10px 22px 5px rgba(0,0,0,0.75);
+ box-shadow: 0px 10px 22px 5px rgba(0,0,0,0.75);
+
+}
+.score {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+}
+p {
+  margin-right: 5px;
+}
+#playerone {
+  border-right: 1px solid grey;
+  padding-right: 10px;
+}
+#playertwo, #computer {
+  padding-left: 5px;
+}
+#reset-board {
+  background-color: #2C9958;
+  border-radius: 5px;
+  color: #FFF;
+  font-size: 10px;
+  margin: 0;
+  padding: 3px;
+  height: auto;
+
+  margin-top: -10px;
+  margin-left: 15px;
+}
+.main-grid {
+  height: 300px;
+  width: 300px;
+  background-color: #468EEC;
+
+}
+.row1, .row2, .row3 {
+  height: 100px;
+  width: 100%;
+  border-bottom: 1px solid #FFF;
+  float: right;
+}
+.row1 {
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
+}
+.box {
+  border-right: 1px solid #FFF;
+  width: 100px;
+  height: 100px;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 75px;
+  padding-bottom: 15px;
+}
+.box:hover {
+  background-color: #C8D8E7;
+}
+#box1{
+  background-color: none;
+}
+#box4{
+  background-color: none;
+}
+.selectPlayer {
+  height: 325px;
+  width: 325px;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFD7A1;
+  padding: 12.5px;
+  border-radius: 10px;
+}
+.board {
+  height: 300px;
+  width: 300px;
+  background-color: #FFF;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #F0F0F0;
+  font-size: 24px;
+  font-family: sans-serif;
+  font-weight: 200;
+  margin: 10px;
+}
+.xo {
+  height: 100px;
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.or {
+  color: #000000;
+  font-weight: 200;
+  font-size: 22px;
+  padding-top: 5px;
+}
+.selectXO {
+  height: 325px;
+  width: 325px;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFD7A1;
+  padding: 12.5px;
+  border-radius: 10px;
+}
+#x, #o {
+  font-size: 24px;
+  margin: 0;
+  color: #000000;
+}
+#player1, #player2 {
+  color: #000000;
+}

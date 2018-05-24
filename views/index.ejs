@@ -1,0 +1,192 @@
+<% include partials/header %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="main">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 nopadding">
+          <div class="" id="col-container">
+            <audio id="alarm" src="https://soundbible.com/grab.php?id=2197&type=mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+              </audio>
+              <div class="main_clock">
+                <div class="main-sub-container">
+                  <div class="pomodoro-title">
+                    <h1 class="pomodoro-title">Pomodoro App</h1>
+                  </div>
+                  <div class="timers">
+                    <div class="break">
+                      <h2 class="timer-titles">Break Length</h2>
+                      <div class="break-time">
+                        <button type="button" id="minus-break">-</button>
+                        <p id="break-count" value="5">5</p>
+                        <button type="button" id="add-break">+</button>
+                      </div>
+                    </div>
+                    <div class="session">
+                      <h2 class="timer-titles">Session Length</h2>
+                      <div class="session-time">
+                        <button type="button" id="minus-session">-</button>
+                        <p id="session-count" value="25">25</p>
+                        <button type="button" id="add-session">+</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clock">
+                    <h2 id="session-title">SESSION</h2>
+                    <h1 id="countdown">25</h1>
+                  </div>
+                  <div class="start">
+                    <button type="button" id="start">Start</button>
+                    <button type="button" id="stop">Stop</button>
+                    <button type="button" id="reset">Reset</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 nopadding">
+          <div class="" id="col-container">
+            <div class="main_calculator">
+              <div class="screen">
+                <h1 id="screen-value">0</h1>
+                <p id="screen-expression"></p>
+              </div>
+              <div class="row-one">
+                <button class="calculator-button" value="AC" id="AC" type="button">AC</button>
+                <button class="calculator-button" value="CE" id="CE" type="button">CE</button>
+                <button class="calculator-button" value="%" id="%" type="button">%</button>
+                <button class="calculator-button" value="/" id="/" type="button">/</button>
+              </div>
+              <div class="row-two">
+                <button class="calculator-button" value="7" id="7" type="button">7</button>
+                <button class="calculator-button" value="8" id="8" type="button">8</button>
+                <button class="calculator-button" value="9" id="9" type="button">9</button>
+                <button class="calculator-button" value="*" id="*" type="button">x</button>
+              </div>
+              <div class="row-three">
+                <button class="calculator-button" value="4" id="4" type="button">4</button>
+                <button class="calculator-button" value="5" id="5" type="button">5</button>
+                <button class="calculator-button" value="6" id="6" type="button">6</button>
+                <button class="calculator-button" value="-" id="-" type="button">-</button>
+              </div>
+              <div class="row-four">
+                <button class="calculator-button" value="1" id="1" type="button">1</button>
+                <button class="calculator-button" value="2" id="2" type="button">2</button>
+                <button class="calculator-button" value="3" id="3" type="button">3</button>
+                <button class="calculator-button" value="+" id="+" type="button">+</button>
+              </div>
+              <div class="row-five">
+                <button class="calculator-button" value="0" id="0" type="button" class="zero-button">0</button>
+                <button class="calculator-button" value="." id="." type="button">.</button>
+                <button class="calculator-button" value="EQUAL" id="=" type="button">=</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 nopadding">
+          <div class="" id="col-container">
+            <div class="main_twitch">
+              <div class="title-container">
+                <h1 class="title">TWITCH APP</h1>
+              </div>
+              <div class="second-container">
+                <div class="tab">
+                      <button class="tablinks"  id="defaultOpen">All</button>
+                      <button value="Online" class="tablinks"  id="nextOpen">Online</button>
+                      <button value="Offline" class="tablinks" id="nextOpen2">Offline</button>
+                </div>
+             <div id="All" class="tabcontent">
+
+
+            </div>
+
+            <div id="Online" class="tabcontent">
+              <h3>Online</h3>
+            </div>
+
+            <div id="Offline" class="tabcontent">
+              <h3>Offline</h3>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 nopadding">
+          <div class="" id="col-container">
+
+            <div class="main-board">
+              <h5 class="tictactoe-title">Let's play Tic Tac Toe</h5>
+            <div class="outer-container" id="outer-container">
+                <div class="score" id="score">
+                  <p id="playerone">Player 1</p>
+                  <p id="playertwo">Player 2</p>
+                  <p id="computer">Computer</p>
+                  <button id="reset-board">Reset</button>
+                </div>
+                <div class="main-grid" id="main-section">
+                  <div class="row1">
+                    <div class="box" id="box1"></div>
+                    <div class="box" id="box2"></div>
+                    <div class="box" id="box3"></div>
+                  </div>
+                  <div class="row2">
+                    <div class="box" id="box4"></div>
+                    <div class="box" id="box5"></div>
+                    <div class="box" id="box6"></div>
+                  </div>
+                  <div class="row3">
+                    <div class="box" id="box7"></div>
+                    <div class="box" id="box8"></div>
+                    <div class="box" id="box9"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="selectPlayer" id="selectPlayer">
+                <div class="board">
+                  <h3>How do you want to play?</h3>
+                  <button id="player1">One player</button>
+                  <button id="player2">Two player</button>
+                </div>
+              </div>
+
+              <div class="selectXO" id="selectXO">
+                <div class="board">
+                  <h5>Player 1 select your side</h5>
+                  <div class="xo">
+                    <button id="x">X</button>
+                    <h2 class="or">or</h2>
+                    <button id="o">O</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 nopadding">
+            <div class="" id="col-container">
+              <div class="wrap">
+                 <h1 class="title">Wikipedia Viewer</h1>
+                 <form class="example" >
+                  <input type="text" placeholder="Search .." name="search" id="searchTerm">
+                    <button type="submit" id="submitButton"><i class="fa fa-search"></i>Search</button>
+                  </form>
+                  <div class="wiki-results-container">
+                    <ul id="searchResults">
+
+                    </ul>
+                  </div>
+
+              </div>
+            </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 nopadding">
+              <div class="" id="col-container">
+
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
