@@ -289,6 +289,8 @@ $(".calculator-button").click(function(){
       finalValue.substring(0,finalValue.lastIndexOf("/")) || finalValue.substring(0,finalValue.lastIndexOf("+"));
       console.log("CLEAR AAFEFAEFA", clearStr );
       expression = clearStr;
+      finalValue = clearStr.split('');
+      expressionArr = finalValue;
       $("#screen-expression").html(expression);
     }
     if(expressionArr.length === 0 && pressedValue === '.'){
