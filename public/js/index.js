@@ -1,4 +1,106 @@
 $(document).ready(function(){
+
+  $('.main_calculator').on("click", ".calculator-button" ,function(){
+    console.log(this.id)
+  })
+  //JS CALULATOR CODE
+  var storeArr = [];
+  var expressionArr = [];
+  var operatorPress = false;
+  var callPercent = false;
+$(".calculator-button").click(function(){
+
+    var clicked = $(this);
+    // do whatever with me
+    //Stores values from button clicked
+    var pressedValue = clicked.val();
+    console.log(this.value, pressedValue)
+    //Create variables that store update
+    var result = '';
+    var finalValue = '';
+    var startCalc = 0;
+    var test = 0;
+    var operatorArr = ['*', '-', '+', '/', '%'];
+    var numbers = ["0","1", "2","3","4","5","6","7","8","9"];
+
+    //Cannot perform this action on calculator
+    //Cannot click an operator twice in a row
+    function invalidOperator() {
+
+    }
+    // expression = pressedValue;
+
+    //CHECK TO MAKE SURE FIRST BUTTON PRESSED IS A NUMBER
+    if(numbers.indexOf(pressedValue.substring(0,1)) !== -1 && expressionArr.length === 0){
+      // if(parseInt(expression.substring(1,2)) > 0){
+      //   console.log('INSIDE THE IF');
+      //   expression = expression.substring(1,2);
+      // }
+      console.log('INSIDE FIRST PRESS')
+      expressionArr.push(pressedValue);
+      $("#screen-expression").append(pressedValue);
+      operatorPress = true;
+    }
+    else if(expressionArr.length > 0 && operatorArr.indexOf(pressedValue) !== -1 && operatorPress){
+      if(pressedValue === "%"){
+        expressionArr.push("/100");
+        finalValue = eval(expressionArr.join(""));
+        $("#screen-value").html(finalValue);
+        operatorPress = true;
+      }
+      else if(pressedValue !== "%"){
+        expressionArr.push(pressedValue);
+        operatorPress = false;
+      }
+
+      console.log("SECOND IF")
+      $("#screen-expression").append(pressedValue);
+    }
+    else if(expressionArr.length > 0 && numbers.indexOf(pressedValue.substring(0,1)) !== -1){
+      expressionArr.push(pressedValue);
+      console.log("PRESSED 2nd", pressedValue)
+      $("#screen-expression").append(pressedValue);
+      operatorPress = true;
+    }
+    //CHECK IF 2nd BUTTON IS A DOT
+    else if(expressionArr.length > 0 && pressedValue === "EQUAL"){
+      finalValue = eval(expressionArr.join(""));
+      $("#screen-value").html(finalValue);
+      expression = '';
+      console.log('EQUAL')
+    }
+    if(pressedValue === 'CE' && expressionArr.length > 0){
+
+      finalValue = expressionArr.join("");
+      console.log("CLEAAEERRRRRRRRRRRR", finalValue)
+      var clearStr = finalValue.substring(0,finalValue.lastIndexOf("*")) || finalValue.substring(0,finalValue.lastIndexOf("-")) ||
+      finalValue.substring(0,finalValue.lastIndexOf("/")) || finalValue.substring(0,finalValue.lastIndexOf("+"));
+      console.log("CLEAR AAFEFAEFA", clearStr );
+      expression = clearStr;
+      finalValue = clearStr.split('');
+      expressionArr = finalValue;
+      $("#screen-expression").html(expression);
+    }
+    if(expressionArr.length === 0 && pressedValue === '.'){
+      expression = 0;
+      expression = expression + pressedValue;
+      console.log('INSIDE DOT', expression)
+      $("#screen-expression").html(expression);
+    }
+    //CLEAR EVERYTHING
+    if(pressedValue === 'AC'){
+      console.log("CLEAR AC")
+       expression = '';
+       expressionArr = [];
+       $("#screen-expression").html(expression);
+       $("#screen-value").html(0);
+    }
+
+    console.log("EXPRESSSIONNNNNN", expressionArr.length, expressionArr)
+
+});
+// END OF CALCULATOR code
+
   //WIKI APP JS code
 
   $('document').ready(function(){
@@ -33,7 +135,6 @@ $("#submitButton").on("click", function(event){
 
 
 })
-
 })
 
   ///WIKI END OF code
@@ -311,126 +412,8 @@ $("#submitButton").on("click", function(event){
     },
     false
   );
-
-  //TWO PLAYER MODE
-  twoPlayer.addEventListener(
-    "click",
-    function() {
-      console.log("TWO PLAYER");
-      selectXO.style.display = "block";
-      selectPlayer.style.display = "none";
-      computer.style.display = "none";
-      playertwo.style.display = "block";
-    },
-    false
-  );
-
   
   //END OF TIC TAC CODE/////////////////
-
-  $('.main_calculator').on("click", ".calculator-button" ,function(){
-    console.log(this.id)
-  })
-  //JS CALULATOR CODE
-  var storeArr = [];
-  var expressionArr = [];
-  var operatorPress = false;
-  var callPercent = false;
-$(".calculator-button").click(function(){
-
-    var clicked = $(this);
-    // do whatever with me
-    //Stores values from button clicked
-    var pressedValue = clicked.val();
-    console.log(this.value, pressedValue)
-    //Create variables that store update
-    var result = '';
-    var finalValue = '';
-    var startCalc = 0;
-    var test = 0;
-    var operatorArr = ['*', '-', '+', '/', '%'];
-    var numbers = ["0","1", "2","3","4","5","6","7","8","9"];
-
-    //Cannot perform this action on calculator
-    //Cannot click an operator twice in a row
-    function invalidOperator() {
-
-    }
-    // expression = pressedValue;
-
-    //CHECK TO MAKE SURE FIRST BUTTON PRESSED IS A NUMBER
-    if(numbers.indexOf(pressedValue.substring(0,1)) !== -1 && expressionArr.length === 0){
-      // if(parseInt(expression.substring(1,2)) > 0){
-      //   console.log('INSIDE THE IF');
-      //   expression = expression.substring(1,2);
-      // }
-      console.log('INSIDE FIRST PRESS')
-      expressionArr.push(pressedValue);
-      $("#screen-expression").append(pressedValue);
-      operatorPress = true;
-    }
-    else if(expressionArr.length > 0 && operatorArr.indexOf(pressedValue) !== -1 && operatorPress){
-      if(pressedValue === "%"){
-        expressionArr.push("/100");
-        finalValue = eval(expressionArr.join(""));
-        $("#screen-value").html(finalValue);
-        operatorPress = true;
-      }
-      else if(pressedValue !== "%"){
-        expressionArr.push(pressedValue);
-        operatorPress = false;
-      }
-
-      console.log("SECOND IF")
-      $("#screen-expression").append(pressedValue);
-    }
-    else if(expressionArr.length > 0 && numbers.indexOf(pressedValue.substring(0,1)) !== -1){
-      expressionArr.push(pressedValue);
-      console.log("PRESSED 2nd", pressedValue)
-      $("#screen-expression").append(pressedValue);
-      operatorPress = true;
-    }
-    //CHECK IF 2nd BUTTON IS A DOT
-    else if(expressionArr.length > 0 && pressedValue === "EQUAL"){
-      finalValue = eval(expressionArr.join(""));
-      $("#screen-value").html(finalValue);
-      expression = '';
-      console.log('EQUAL')
-    }
-    if(pressedValue === 'CE' && expressionArr.length > 0){
-
-      finalValue = expressionArr.join("");
-      console.log("CLEAAEERRRRRRRRRRRR", finalValue)
-      var clearStr = finalValue.substring(0,finalValue.lastIndexOf("*")) || finalValue.substring(0,finalValue.lastIndexOf("-")) ||
-      finalValue.substring(0,finalValue.lastIndexOf("/")) || finalValue.substring(0,finalValue.lastIndexOf("+"));
-      console.log("CLEAR AAFEFAEFA", clearStr );
-      expression = clearStr;
-      finalValue = clearStr.split('');
-      expressionArr = finalValue;
-      $("#screen-expression").html(expression);
-    }
-    if(expressionArr.length === 0 && pressedValue === '.'){
-      expression = 0;
-      expression = expression + pressedValue;
-      console.log('INSIDE DOT', expression)
-      $("#screen-expression").html(expression);
-    }
-    //CLEAR EVERYTHING
-    if(pressedValue === 'AC'){
-      console.log("CLEAR AC")
-       expression = '';
-       expressionArr = [];
-       $("#screen-expression").html(expression);
-       $("#screen-value").html(0);
-    }
-
-    console.log("EXPRESSSIONNNNNN", expressionArr.length, expressionArr)
-//         console.log(finalValue, 'FINAL')
-//         $("#screen-value").html(finalValue)
-});
-// END OF CALCULATOR code
-
-
 
   // POMODORO JS CODE
   var sessionNumber = 25;
