@@ -47,36 +47,42 @@ $("#submitButton").on("click", function(event){
   var twoPlayer = document.getElementById("player2");
   var selectPlayer = document.getElementById("selectPlayer");
   var playertwo = document.getElementById("playertwo");
-
-  var x = document.getElementById("x");
-  var o = document.getElementById("o");
-  var reset = document.getElementById("reset-board");
   var gameArr = [];
   var playerArr = [];
   var computerArr = [];
+  var checkBoardArr = [];
   var player1Turn = true;
   var computerTurn = false;
+  var checkWinner = false;
+  var winner = false;
   var count = 0;
+  var drawStatus = false;
+  var x = document.getElementById("x");
+  var o = document.getElementById("o");
+  var resetBoard = document.getElementById("reset-board");
   var boardArray = ["box1","box2","box3","box4","box5","box6","box7","box8","box9"];
-
+  var playerPoints1 = 0; 
+  var computerPoints = 0;
   computer.style.display = "none";
-
-    outercontainer.style.display = "none";
-    selectXO.style.display = "none";
-
+  outercontainer.style.display = "none";
+  selectXO.style.display = "none";
+  $('.draw-game, .player-wins, .computer-wins').hide();
   var box = document.getElementsByClassName("box");
 
-  //SELECT TYPE OF GAME
+  
+ 
 
+  //SELECT TYPE OF GAME
   onePlayer.addEventListener(
     "click",
     function() {
-      console.log("ONE PLAYER");
+      console.log("ONE PLAYER MAIN EVENT CLICK", computerArr, playerArr)
       selectXO.style.display = "block";
       playertwo.style.display = "none";
       computer.style.display = "block";
       selectPlayer.style.display = "none";
-
+    
+      
       var xo = "";
       var ox = "";
 
@@ -84,7 +90,7 @@ $("#submitButton").on("click", function(event){
       x.addEventListener(
         "click",
         function(x) {
-          console.log("Xdeaf", x.path[0].id);
+          console.log("LOG XXXXXX", computerArr, playerArr)
           outercontainer.style.display = "flex";
           selectXO.style.display = "none";
           xo = "x";
@@ -96,7 +102,7 @@ $("#submitButton").on("click", function(event){
       o.addEventListener(
         "click",
         function(o) {
-          console.log("Xdeaf", o.path[0].id);
+          console.log("LOG OOOOOOO", computerArr, playerArr)
           outercontainer.style.display = "flex";
           selectXO.style.display = "none";
           xo = "o";
@@ -104,80 +110,204 @@ $("#submitButton").on("click", function(event){
         },
         false
       );
-
       //Player 1 goes first
       if (player1Turn) {
-        count++;
         for (var i = 0; i < box.length; i++) {
           box[i].addEventListener(
             "click",
             function(id) {
-              document.getElementById(id.path[0].id).innerHTML = xo;
-              if (gameArr.indexOf(id.path[0].id) === -1) {
+              console.log("CLICKING CLICK", checkWinner, player1Turn, "COUNT", count)
+              if (checkBoardArr.indexOf(id.path[0].id) === -1  && checkWinner !== true && player1Turn) {
+                document.getElementById(id.path[0].id).innerHTML = xo;
                 playerArr.push(id.path[0].id);
+                checkBoardArr.push(id.path[0].id);
+                // console.log("PLAYER PLAYER ARR", playerArr, "CHKBOARD",checkBoardArr);
+                count++;
+                winner(playerArr, player1Turn, count)
+                // console.log('WINNER IN CLICK', checkWinner)
+                if(checkWinner !== true && computerTurn){
+                  console.log("CALLLL COMPUTER FUNCTION")
+                  comp();
+                }
               }
-              // console.log('count', gameArr, gameArr.length, computerTurn)
-              if (count === 9) {
-                gameArr = [];
-                console.log("GAME IS OVER", gameArr);
+              if (count === 9 && checkWinner === false) {
+                console.log("DRAW")
+                playerArr = [];
+                computerArr = [];
+                drawStatus = true;
+                $('.main-grid').fadeOut(100,function(){
+                  $('.draw-game').fadeIn(100, function(){
+                    $('.draw-game').fadeOut(500, function(){
+                      $('.main-grid').fadeIn(500);
+                      newGame();
+                    });
+                  })
+                })
                 for (var i = 0; i < box.length; i++) {
                   document.getElementById(box[i].id).innerHTML = "";
                 }
               }
-              computerTurn = true;
-              comp();
-              gameArr = playerArr;
-              console.log("PLAYER GAME ARR", gameArr, playerArr);
-              winner();
             },
             false
           );
-
-          //COMPUTER TURN
-          function comp() {
-            if (computerTurn === true) {
-              var randomNum = Math.floor(Math.random() * 8) + 0;
-              console.log("INSIDE COMPUTERS TURN", randomNum, count);
-              if (gameArr.indexOf(boardArray[randomNum]) === -1) {
-                setInterval(function() {
-                  document.getElementById(box[randomNum].id).innerHTML = ox;
-                }, 1000);
-              }
-              if (gameArr.indexOf(box[randomNum].id) === -1) {
-                computerArr.push(box[randomNum].id);
-              }
-
-              player1Turn = true;
-              computerTurn = false;
-            }
-
-            count++;
-            gamerArr = computerArr;
-            console.log("COMPUTER GAME ARR", gameArr, computerArr);
-            winner();
-          }
-
            //CHECKS IF WINNER
-          function winner() {
+          function winner(gameArr, player, count) {
+            if(player){
+              computerTurn = true;
+            }
+            console.log("WINNER FUNCTION CALLED")
              if(gameArr.indexOf('box1') !== -1 && gameArr.indexOf('box4') !== -1 && gameArr.indexOf('box7') !== -1){
-             alert('YOU A WINNER')
+              checkWinner = true;
+              newGame(player)
+              
            }
             if(gameArr.indexOf('box1') !== -1 && gameArr.indexOf('box2') !== -1 && gameArr.indexOf('box3') !== -1){
-             console.log("YOU ARE THE WINNER!!!!")
+             console.log("YOU ARE THE WINNER!!!!");
+               checkWinner = true;
+               newGame(player)
+               
            }
             if(gameArr.indexOf('box1') !== -1 && gameArr.indexOf('box5') !== -1 && gameArr.indexOf('box9') !== -1){
-             console.log("YOU ARE THE WINNER!!!!")
+             console.log("YOU ARE THE WINNER!!!!");
+               checkWinner = true;
+               newGame(player)
+               
            }
              if(gameArr.indexOf('box3') !== -1 && gameArr.indexOf('box6') !== -1 && gameArr.indexOf('box9') !== -1){
-             console.log("YOU ARE THE WINNER!!!!")
+             console.log("YOU ARE THE WINNER!!!!");
+               checkWinner = true;
+               newGame(player)
            }
              if(gameArr.indexOf('box7') !== -1 && gameArr.indexOf('box8') !== -1 && gameArr.indexOf('box9') !== -1){
-             console.log("YOU ARE THE WINNER!!!!")
+             console.log("YOU ARE THE WINNER!!!!");
+               checkWinner = true;
+               newGame(player)
            }
+           if(gameArr.indexOf('box4') !== -1 && gameArr.indexOf('box5') !== -1 && gameArr.indexOf('box6') !== -1){
+            console.log("YOU ARE THE WINNER!!!!");
+           checkWinner = true
+            newGame(player)
           }
-
+          if(gameArr.indexOf('box2') !== -1 && gameArr.indexOf('box5') !== -1 && gameArr.indexOf('box8') !== -1){
+            console.log("YOU ARE THE WINNER!!!!");
+           checkWinner = true
+            newGame(player)
+          }
+          if(gameArr.indexOf('box3') !== -1 && gameArr.indexOf('box5') !== -1 && gameArr.indexOf('box7') !== -1){
+            console.log("YOU ARE THE WINNER!!!!");
+           checkWinner = true
+            newGame(player)
+          }
+          }
         }
+     
       }
+       //COMPUTER TURN
+       function comp() {
+        
+        var randomNum = Math.floor(Math.random() * 8) + 0;
+        if (computerTurn === true && checkBoardArr.indexOf(boardArray[randomNum]) === -1 && count <9 && checkWinner !== true)  {
+              document.getElementById(box[randomNum].id).innerHTML = ox;
+            computerArr.push(box[randomNum].id);
+            checkBoardArr.push(box[randomNum].id);
+            computerTurn = false;
+            count++;
+            
+            winner(computerArr, computerTurn, count);
+            if (winner === false){
+              // console.log("COMPPPPPP WINNNNNNNNNS")
+              computerPoints++;
+              document.getElementById('player1Score').innerHTML = computerPoints;
+              gamerArr = [];
+              computerArr = [];
+              player1Turn = false;
+              for (var i = 0; i < box.length; i++) {
+                document.getElementById(box[i].id).innerHTML = "";
+              }
+              // console.log("CLEAN BOARD COMP SIDE", gamerArr)
+            } else {
+              player1Turn = true;
+              // console.log("COMPUTER LETS PLAYER ONE GO")
+            }
+        } 
+        else if (checkWinner !== true  && count < 9){
+          // console.log("ELSE IF FIRED")
+          comp();
+        } 
+       
+      }
+      function newGame(player){
+        console.log("PLAYER", player)
+        for (var i = 0; i < box.length; i++) {
+          console.log("NEW GAME BOXES")
+          document.getElementById(box[i].id).innerHTML = "";
+        }
+        if(player && drawStatus === false){
+          console.log("PLAYER 1 WOOOOONNNNNNNNN");
+          playerPoints1++;
+          document.getElementById('player1Score').innerHTML = playerPoints1;
+          $('.main-grid').fadeOut(300,function(){
+            $('.player-wins').fadeIn(300, function(){
+              $('.player-wins').fadeOut(700, function(){
+                $('.main-grid').fadeIn(700);
+                newGame();
+              });
+            })
+          });
+          checkWinner = false;
+          count = 0;
+          computerTurn = false;
+        } else if(player === false && drawStatus === false)  {
+          player1Turn = true;
+          computerPoints++;
+          checkWinner = false;
+          count = 0;
+          document.getElementById('computerScore').innerHTML = computerPoints;
+          console.log('COMPUTER WOOOOOOOOOONNNNNNNN')
+          $('.main-grid').fadeOut(300,function(){
+            $('.computer-wins').fadeIn(300, function(){
+              $('.computer-wins').fadeOut(700, function(){
+                $('.main-grid').fadeIn(700);
+                newGame();
+              });
+            })
+          })
+        }
+        gamerArr = [];
+        computerArr = [];
+        playerArr = [];
+        checkBoardArr = [];
+        count = 0;
+        player1Turn = true;
+        checkWinner = false;
+        drawStatus = false;
+      }
+    },
+    false
+  );
+
+   //RESET BUTTON
+   resetBoard.addEventListener(
+    "click",
+    function() {
+      gameArr = [];
+      computerArr = [];
+      checkBoardArr = [];
+      playerArr = [];
+      checkWinner = false;
+      count = 0;
+      console.log("RESEEETTTTT", gamerArr, computerArr, checkBoardArr, checkWinner)
+      selectPlayer.style.display = "block";
+      selectXO.style.display = "none";
+      outercontainer.style.display = "none";
+      for (var i = 0; i < box.length; i++) {
+        console.log("BOXXX", box[i].id);
+        document.getElementById(box[i].id).innerHTML = "";
+      }
+      playerPoints1 = 0; 
+      computerPoints = 0;
+      document.getElementById('player1Score').innerHTML = playerPoints1;
+      document.getElementById('computerScore').innerHTML = computerPoints;
     },
     false
   );
@@ -195,21 +325,7 @@ $("#submitButton").on("click", function(event){
     false
   );
 
-  //RESET BUTTON
-  reset.addEventListener(
-    "click",
-    function() {
-      for (var i = 0; i < box.length; i++) {
-        console.log("BOXXX", box[i].id);
-        document.getElementById(box[i].id).innerHTML = "";
-      }
-      selectPlayer.style.display = "block";
-      selectXO.style.display = "none";
-      outercontainer.style.display = "none";
-      gameArr = [];
-    },
-    false
-  );
+  
   //END OF TIC TAC CODE/////////////////
 
   $('.main_calculator').on("click", ".calculator-button" ,function(){

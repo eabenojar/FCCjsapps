@@ -109,9 +109,9 @@
               <h5 class="tictactoe-title">Let's play Tic Tac Toe</h5>
             <div class="outer-container" id="outer-container">
                 <div class="score" id="score">
-                  <p id="playerone">Player 1</p>
+                  <p id="playerone">Player <strong id="player1Score">0</strong></p>
                   <p id="playertwo">Player 2</p>
-                  <p id="computer">Computer</p>
+                  <p id="computer">Computer <strong id="computerScore">0</strong></p>
                   <button id="reset-board">Reset</button>
                 </div>
                 <div class="main-grid" id="main-section">
@@ -131,12 +131,21 @@
                     <div class="box" id="box9"></div>
                   </div>
                 </div>
+                <div class="draw-game">
+                  <h1>It's a draw!</h1>
+                </div>
+                <div class="player-wins">
+                  <h1>Player 1 Wins!</h1>
+                </div>
+                <div class="computer-wins">
+                  <h1>Computer Wins!</h1>
+                </div>
               </div>
               <div class="selectPlayer" id="selectPlayer">
                 <div class="board">
-                  <h3>How do you want to play?</h3>
-                  <button id="player1">One player</button>
-                  <button id="player2">Two player</button>
+                  <!-- <h3>How do you want to play?</h3> -->
+                  <button id="player1">Start Playing</button>
+                  <!-- <button id="player2">Two player</button> -->
                 </div>
               </div>
 
@@ -157,3 +166,4 @@
     </div>
   </div>
 </div>
+<% include partials/footer %>

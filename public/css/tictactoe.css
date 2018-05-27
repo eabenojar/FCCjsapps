@@ -58,7 +58,14 @@ p {
   height: 300px;
   width: 300px;
   background-color: #468EEC;
-
+}
+.draw-game, .player-wins, .computer-wins {
+  height: 300px;
+  width: 300px;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .row1, .row2, .row3 {
   height: 100px;
@@ -154,5 +161,17 @@ button {
   color: #000000;
 }
 #player1, #player2 {
-  color: #000000;
+  color: #FFFFFF;
+  background-color: #46B577;
+  border-radius: 8px; 
+  width: auto;
+  height: auto;
+  padding: 10px;
+  margin-top: 5px;
+}
+#player1:hover {
+  opacity: 0.8;
+}
+#player1Score, #computerScore {
+  font-size: 14px;
 }
