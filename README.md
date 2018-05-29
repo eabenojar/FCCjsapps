@@ -5,7 +5,7 @@ Here are some of the projects from the free code camp front end curriculum. The 
 All projects were build using JQuery except for the tic tac toe game which was built using Vanilla JS. 
 <br>
 
-#Website Images
+# Website Images
 
 ![Image not found](public/images/jsprojects1.png "Description goes here")
 
